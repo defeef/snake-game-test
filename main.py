@@ -17,4 +17,7 @@ while True:
   elif snake_dir == 3:
     snake[0][1] -= 1
 
+  for i in range(len(snake) - 1, 0, -1):
+    snake[i] = snake[i - 1]
+
   time.sleep(0.05)
