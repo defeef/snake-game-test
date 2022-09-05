@@ -20,4 +20,12 @@ while True:
   for i in range(len(snake) - 1, 0, -1):
     snake[i] = snake[i - 1]
 
+  if snake[0][0] < 0 or snake[0][0] > width or snake[0][1] < 0 or snake[0][1] > height:
+    break
+  for tail in snake:
+    if tail != snake[0] and snake[0] == tail:
+      break
+
   time.sleep(0.05)
+
+print("You Lost!")
