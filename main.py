@@ -25,6 +25,16 @@ def print_screen():
     row = ""
 
 while True:
+  movement = input()
+  if movement == "w":
+    snake_dir = 0
+  elif movement == "d":
+    snake_dir = 1
+  elif movement == "s":
+    snake_dir = 2
+  elif movement == "a":
+    snake_dir = 3
+
   if snake_dir == 0:
     snake[0][0] -= 1
   elif snake_dir == 1:
