@@ -11,18 +11,19 @@ def print_screen():
   screen = [[" " for _ in range(width)] for _ in range(height)]
 
   for segment in snake:
-    print(str(segment[0]) + ", " + str(segment[1]))
     screen[segment[0]][segment[1]] = "S"
 
   row = ""
 
+  print("+" + "-" * width * 2 + "+")
   for i in range(height):
     for j in range(width):
       row += screen[i][j]
       if j < width:
         row += " "
-    print(row)
+    print("|" + row + "|")
     row = ""
+  print("+" + "-" * width * 2 + "+")
 
 while True:
   movement = input()
@@ -47,7 +48,7 @@ while True:
   for i in range(len(snake) - 1, 0, -1):
     snake[i] = snake[i - 1]
 
-  if snake[0][0] < 0 or snake[0][0] > width or snake[0][1] < 0 or snake[0][1] > height:
+  if snake[0][0] < 0 or snake[0][0] > width - 1 or snake[0][1] < 0 or snake[0][1] > height - 1:
     break
   for tail in snake:
     if tail != snake[0] and snake[0] == tail:
