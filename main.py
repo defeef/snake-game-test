@@ -40,23 +40,15 @@ while True:
     snake_dir = 3
 
   if snake_dir == 0:
-    snake[0][0] -= 1
+    snake.insert(0, [snake[0][0] - 1, snake[0][1]])
   elif snake_dir == 1:
-    snake[0][1] += 1
+    snake.insert(0, [snake[0][0], snake[0][1] + 1])
   elif snake_dir == 2:
-    snake[0][0] += 1
+    snake.insert(0, [snake[0][0] + 1, snake[0][1]])
   elif snake_dir == 3:
-    snake[0][1] -= 1
+    snake.insert(0, [snake[0][0], snake[0][1] - 1])
 
-  for i in range(len(snake)): # TODO: Insert new location, remove last element
-    print(str(i))
-    try:
-      print(snake[i + 1])
-    except:
-      pass
-    print(snake[i])
-    if i < len(snake) - 1:
-      snake[i + 1] = snake[i]
+  del snake[len(snake) - 1]
   
   if snake[0] == apple:
     while apple in snake:
