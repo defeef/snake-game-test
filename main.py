@@ -48,7 +48,7 @@ while True:
   elif snake_dir == 3:
     snake[0][1] -= 1
 
-  for i in range(len(snake)):
+  for i in range(len(snake)): # TODO: Insert new location, remove last element
     print(str(i))
     try:
       print(snake[i + 1])
