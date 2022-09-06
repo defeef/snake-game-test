@@ -27,7 +27,6 @@ def print_screen():
     print("|" + row + "|")
     row = ""
   print("+" + "-" * width * 2 + "+")
-  print(str(apple))
 
 while True:
   movement = input()
@@ -49,12 +48,27 @@ while True:
   elif snake_dir == 3:
     snake[0][1] -= 1
 
-  for i in range(len(snake) - 1, 0, -1):
-    snake[i] = snake[i - 1]
+  for i in range(len(snake)):
+    print(str(i))
+    try:
+      print(snake[i + 1])
+    except:
+      pass
+    print(snake[i])
+    if i < len(snake) - 1:
+      snake[i + 1] = snake[i]
   
   if snake[0] == apple:
     while apple in snake:
       apple[0], apple[1] = random.randint(0, width - 1), random.randint(0, width - 1)
+      if snake_dir == 0:
+        snake.append([snake[0][0] + 1, snake[0][1]])
+      elif snake_dir == 1:
+        snake.append([snake[0][0], snake[0][1] - 1])
+      elif snake_dir == 2:
+        snake.append([snake[0][0] - 1, snake[0][1]])
+      elif snake_dir == 3:
+        snake.append([snake[0][0], snake[0][1] + 1])
 
   if snake[0][0] < 0 or snake[0][0] > width - 1 or snake[0][1] < 0 or snake[0][1] > height - 1:
     break
